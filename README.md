@@ -1,16 +1,29 @@
-# React + Vite
+# Solana MVP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A small React app for trying out Solana wallets. Connect a Phantom wallet and fire off a test transaction on Solana devnet, then see its signature.
 
-Currently, two official plugins are available:
+**Live:** [solana-mvp.vercel.app](https://solana-mvp.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What it does
 
-## React Compiler
+- Connects a Phantom wallet with the Solana wallet adapter, and reconnects automatically on reload.
+- Runs on **devnet**, so no real SOL is involved.
+- The button requests a 0.0001 SOL devnet airdrop to a test address and shows the transaction signature.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Stack
 
-## Expanding the ESLint configuration
+React 19, Vite, Tailwind CSS 4, `@solana/web3.js` and `@solana/wallet-adapter`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Running locally
+
+```bash
+npm install
+npm run dev     # http://localhost:5173
+```
+
+You need the [Phantom](https://phantom.app) browser extension set to devnet.
+
+## Code tour
+
+- `src/WalletContext.jsx` sets up the devnet connection and the Phantom adapter.
+- `src/App.jsx` has the connect button and the transaction logic.
